@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Monster Factory es un mini-programa interactivo que simula una fábrica de monstruos originales. El programa combina diferentes características para generar criaturas con una identidad, personalidad, habilidades y nivel de rareza propios.
+Monster Factory es un mini programa interactivo que simula una fábrica de monstruos originales. El programa combina diferentes características para generar criaturas con una identidad, personalidad, habilidades y nivel de rareza propios.
 
 El proyecto comienza como una implementación en JavaScript y posteriormente será migrado a TypeScript, haciendo explícitas las estructuras de datos, categorías, estados y funciones principales.
 
