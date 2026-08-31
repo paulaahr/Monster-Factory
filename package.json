@@ -1,0 +1,14 @@
+{
+  "name": "monster-factory",
+  "version": "1.0.0",
+  "description": "Mini programa interactivo de consulta de monstruos.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsc && node dist/index.js",
+    "dev:js": "node src/js/index.js",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}
