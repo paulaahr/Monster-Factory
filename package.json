@@ -4,10 +4,10 @@
   "description": "Mini programa interactivo de generación de monstruos.",
   "type": "module",
   "scripts": {
-    "dev": "node src/js/index.js",
-    "build": "tsc",
-    "start": "node src/js/index.js"
-  },
+  "dev": "tsc && node dist/index.js",
+  "dev:js": "node src/js/index.js",
+  "build": "tsc"
+},
   "devDependencies": {
     "typescript": "^7.0.2"
   }

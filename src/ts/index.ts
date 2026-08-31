@@ -1,41 +1,15 @@
-import {
-  names,
-  colors,
-  eyeCounts,
-  personalities,
-  abilities,
-  rarities
-} from "./data.js";
+import { generateMonster } from "./monster.js";
 
-import type { Monster } from "./types.js";
+async function main(): Promise<void> {
+  try {
+    const monster = await generateMonster();
 
-export function getRandomItem<T>(array: T[]): T {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
+    console.log("MONSTER FACTORY");
+    console.log("Monstruo generado:");
+    console.log(monster);
+  } catch (error) {
+    console.error("Error al generar el monstruo:", error);
+  }
 }
 
-export function generateMonster(): Promise<Monster> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const [name, color, eyes, personality, ability, rarity] = [
-        getRandomItem(names),
-        getRandomItem(colors),
-        getRandomItem(eyeCounts),
-        getRandomItem(personalities),
-        getRandomItem(abilities),
-        getRandomItem(rarities)
-      ];
-
-      const monster: Monster = {
-        name,
-        color,
-        eyes,
-        personality,
-        ability,
-        rarity
-      };
-
-      resolve(monster);
-    }, 1000);
-  });
-}
+main();
