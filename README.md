@@ -2,55 +2,68 @@
 
 ## Descripción
 
-Monster Factory es un mini programa interactivo que simula una fábrica de monstruos inspirado en la película Monster INC. El programa combina diferentes características para generar criaturas con un nombre, personalidad, habilidades y nivel de rareza.
+Monster Factory es un mini programa interactivo inspirado en *Monsters, Inc.* que funciona como un pequeño archivo de monstruos. Cada monstruo ya tiene información definida, como nombre, color, cantidad de ojos, personalidad, habilidad y rareza.
 
-El proyecto comienza como una implementación en JavaScript y posteriormente se migra a TypeScript, haciendo explícitas las estructuras de datos, categorías y funciones principales.
+El proyecto comienza como una implementación en JavaScript y posteriormente se migra a TypeScript. La migración permite hacer más claras las estructuras de datos y controlar los valores permitidos para las diferentes características de los monstruos.
 
 ## Intención inicial
 
-Crear una experiencia interactiva que permita generar monstruos mediante la combinación aleatoria de diferentes atributos predefinidos.
+Crear un pequeño archivo interactivo de monstruos que permita consultar y organizar diferentes criaturas a partir de información previamente definida.
 
-La generación simula un proceso de fabricación dividido en diferentes etapas, utilizando programación asíncrona para representar un proceso no bloqueante.
+El programa utiliza filtros para encontrar monstruos según sus características y una función para calcular el promedio de ojos. Además, se utiliza programación asíncrona para simular la carga de la información sin bloquear el flujo del programa.
 
 ## Restricciones
 
-* Los monstruos se generan únicamente utilizando los atributos definidos en las listas de datos.
+* Los monstruos utilizan únicamente los atributos definidos en el archivo de datos.
 * Cada monstruo debe tener nombre, color, cantidad de ojos, personalidad, habilidad y rareza.
-* La generación debe realizarse de manera asíncrona mediante `Promise` y `async/await`.
-* La versión TypeScript debe mantener la lógica principal de la versión JavaScript, incorporando tipado explícito.
+* La consulta de información debe utilizar `Promise`, `async/await` y `setTimeout`.
+* La versión TypeScript debe mantener la lógica principal de la versión JavaScript, incorporando tipos personalizados.
+* Los valores de color, personalidad y rareza deben estar limitados mediante uniones literales.
 
 ## Criterios de aceptación
 
-* El programa debe generar un monstruo con al menos cinco características diferentes.
-* La generación debe utilizar `Promise` y `async/await`.
-* La versión TypeScript debe utilizar tipos personalizados, interfaces y al menos una unión literal.
+* El programa debe mostrar información de varios monstruos previamente definidos.
+* El programa debe permitir filtrar los monstruos por color, personalidad y rareza.
+* El programa debe utilizar `Promise`, `async/await` y `setTimeout` para simular una consulta asíncrona.
+* La versión TypeScript debe utilizar al menos tres tipos personalizados entre `type` e `interface`.
+* La versión TypeScript debe utilizar al menos una unión literal para controlar los valores permitidos.
 
-## JavaScript avanzado 
+## JavaScript avanzado
 
 La versión JavaScript utiliza diferentes conceptos de JavaScript avanzado:
 
-* **Módulos ES:** `import` y `export` para separar los datos y la lógica.
-* **Destructuring:** para obtener las características generadas.
-* **Promesas:** para simular un proceso de fabricación asíncrono.
-* **async/await:** para esperar la generación del monstruo sin bloquear el flujo.
-* **Manejo de errores:** mediante `try/catch`.
+* **Módulos ES:** se utilizan `import` y `export` para separar los datos de la lógica del programa.
+* **Funciones de orden superior:** se utilizan métodos como `filter`, `map` y `reduce` para trabajar con los datos de los monstruos.
+* **Destructuring:** se utiliza para extraer características específicas de los objetos.
+* **Spread:** se utiliza para copiar y combinar información de los objetos.
+* **Closures:** se utiliza un contador cuyo valor permanece privado dentro de la función que lo crea.
+* **Promesas:** se utiliza `Promise` para simular la carga de información de los monstruos.
+* **async/await:** permite esperar el resultado de la consulta asíncrona de una manera más clara.
+* **setTimeout:** simula un pequeño tiempo de espera durante la carga de información.
+* **Manejo de errores:** se utiliza `try/catch` y `reject` para controlar posibles errores durante la consulta.
 
 ## Migración a TypeScript
 
-La versión TypeScript mantiene la lógica de la versión JavaScript, pero incorpora tipos para controlar la estructura de los datos.
+La versión TypeScript mantiene la lógica principal de JavaScript, pero incorpora tipos para definir con mayor claridad la estructura de los datos.
 
 Se utilizaron:
 
-* `Color` como tipo personalizado para definir los colores permitidos.
-* `Personality` como tipo personalizado para las personalidades disponibles.
-* `Rarity` como tipo personalizado para los niveles de rareza.
-* `Monster` como `interface` para definir la estructura completa de un monstruo.
-* Uniones literales para limitar los valores permitidos en diferentes categorías.
-* Una función genérica `getRandomItem<T>` para trabajar con diferentes tipos de datos.
+* `Color` como unión literal para definir los colores permitidos.
+* `Personalidad` como unión literal para definir las personalidades disponibles.
+* `Rareza` como unión literal para definir los niveles de rareza.
+* `Monstruo` como `interface` para definir la estructura completa de cada monstruo.
 
-TypeScript permitió detectar y prevenir valores que no pertenecen a las categorías definidas, haciendo que la estructura del programa sea más clara y mantenible.
+También se tiparon las funciones principales indicando los tipos de sus parámetros y valores de retorno, por ejemplo `Monstruo[]`, `Color` y `Promise<Monstruo[]>`.
+
+Durante la migración, TypeScript permitió detectar errores relacionados con los tipos de datos y los módulos. Esto ayudó a comprobar que las funciones recibieran la información esperada y que los valores utilizados pertenecieran a las categorías definidas.
 
 ## Comandos
+
+### Instalar dependencias
+
+```bash
+npm install
+```
 
 ### Ejecutar JavaScript
 
@@ -78,10 +91,12 @@ El proyecto se desarrolló utilizando Git y GitHub mediante la rama:
 feature/proyecto-1
 ```
 
-Se realizaron commits separados para la implementación inicial en JavaScript y la posterior migración a TypeScript.
+Se realizaron commits durante el desarrollo para registrar la implementación inicial en JavaScript, la migración a TypeScript y las correcciones realizadas durante el proceso.
 
 ## Aprendizajes
 
-Durante este proyecto aprendí a organizar mejor el código separándolo en diferentes módulos y a utilizar `Promise` y `async/await` para hacer que la generación del monstruo fuera asíncrona. También pude practicar el proceso de pasar un proyecto de JavaScript a TypeScript.
+Durante este proyecto aprendí a organizar mejor el código separándolo en diferentes módulos y a utilizar conceptos de JavaScript como `filter`, `reduce`, destructuring, spread, `Promise` y `async/await`.
 
-La migración me ayudó a entender mejor para qué sirven los tipos, las interfaces y las uniones literales, ya que permiten definir con más claridad qué datos puede tener cada monstruo y evitar errores mientras estoy programando.
+También pude practicar el proceso de pasar un proyecto de JavaScript a TypeScript. La migración me ayudó a entender mejor para qué sirven los tipos, las interfaces y las uniones literales, ya que permiten definir con más claridad qué datos puede tener cada monstruo y ayudan a detectar errores mientras estoy programando.
+
+Además, entendí mejor cómo funciona un flujo de trabajo con Git y GitHub, utilizando una rama de trabajo y registrando los cambios mediante commits.

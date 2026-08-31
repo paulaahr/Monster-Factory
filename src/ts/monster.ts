@@ -1,41 +1,142 @@
+/**
+ * monster.ts
+ * ----------
+ * Lógica para consultar y trabajar con los monstruos.
+ *
+ * Conceptos de JavaScript/TypeScript utilizados:
+ * - Closures
+ * - Funciones de orden superior
+ * - Destructuring + spread
+ * - Promesas
+ * - async/await
+ * - setTimeout
+ */
+
 import {
-  names,
-  colors,
-  eyeCounts,
-  personalities,
-  abilities,
-  rarities
-} from "./data.js";
+  Monstruo,
+  Color,
+  Personalidad,
+  Rareza,
+} from "./types.js";
 
-import type { Monster } from "./types.js";
+// --- Closures ---------------------------------------------------------------
 
-export function getRandomItem<T>(array: T[]): T {
-  const randomIndex = Math.floor(Math.random() * array.length);
-  return array[randomIndex];
+export function crearContadorConsultas() {
+  let total = 0;
+
+  return {
+    registrar() {
+      total += 1;
+      return total;
+    },
+
+    obtenerTotal() {
+      return total;
+    },
+  };
 }
 
-export function generateMonster(): Promise<Monster> {
-  return new Promise((resolve) => {
+// --- Funciones de orden superior --------------------------------------------
+
+export function filtrarPorColor(
+  lista: Monstruo[],
+  color: Color
+): Monstruo[] {
+  return lista.filter(
+    (monstruo) => monstruo.color === color
+  );
+}
+
+export function filtrarPorPersonalidad(
+  lista: Monstruo[],
+  personalidad: Personalidad
+): Monstruo[] {
+  return lista.filter(
+    (monstruo) => monstruo.personalidad === personalidad
+  );
+}
+
+export function filtrarPorRareza(
+  lista: Monstruo[],
+  rareza: Rareza
+): Monstruo[] {
+  return lista.filter(
+    (monstruo) => monstruo.rareza === rareza
+  );
+}
+
+export function calcularPromedioOjos(
+  lista: Monstruo[]
+): number {
+  if (lista.length === 0) return 0;
+
+  const suma = lista.reduce(
+    (acumulado, monstruo) =>
+      acumulado + monstruo.ojos,
+    0
+  );
+
+  return Math.round(suma / lista.length);
+}
+
+// --- Destructuring + spread -------------------------------------------------
+
+export function mostrarResumen(
+  monstruo: Monstruo
+): Monstruo {
+  const {
+    nombre,
+    color,
+    personalidad,
+    ...caracteristicas
+  } = monstruo;
+
+  return {
+    nombre,
+    color,
+    personalidad,
+    ...caracteristicas,
+  };
+}
+//
+
+function cargarInformacion(
+  monstruo: Monstruo
+): Promise<Monstruo> {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const [name, color, eyes, personality, ability, rarity] = [
-        getRandomItem(names),
-        getRandomItem(colors),
-        getRandomItem(eyeCounts),
-        getRandomItem(personalities),
-        getRandomItem(abilities),
-        getRandomItem(rarities)
-      ];
+      if (!monstruo || !monstruo.nombre) {
+        reject(
+          new Error(
+            `Monstruo inválido (id: ${monstruo?.id})`
+          )
+        );
 
-      const monster: Monster = {
-        name,
-        color,
-        eyes,
-        personality,
-        ability,
-        rarity
-      };
+        return;
+      }
 
-      resolve(monster);
-    }, 1000);
+      resolve(monstruo);
+    }, 150);
   });
+}
+
+export async function consultarMonstruos(
+  lista: Monstruo[]
+): Promise<Monstruo[]> {
+  try {
+    const disponibles = await Promise.all(
+      lista.map((monstruo) =>
+        cargarInformacion(monstruo)
+      )
+    );
+
+    return disponibles;
+  } catch (error) {
+    console.error(
+      "No se pudo cargar la información:",
+      (error as Error).message
+    );
+
+    return [];
+  }
 }

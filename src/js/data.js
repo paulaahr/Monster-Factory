@@ -1,47 +1,99 @@
-export const names = [
-  "Plof",
-  "Grumpo",
-  "Momo",
-  "Burbujón",
-  "Gloop",
-  "Nubis",
-  "Blomp",
-  "Wuggy",
-  "Zarpín",
-  "Mochi"
-];
+/**
+ * data.js
+ * -------
+ * Datos base de los monstruos.
+ * Cada monstruo ya tiene su propia información.
+ */
 
-export const colors = [
-  "azul",
-  "morado",
-  "amarillo",
-  "verde"
-];
-
-export const eyeCounts = [
-  1,
-  5,
-  10,
-  15
-];
-
-export const personalities = [
-  "amigable",
-  "divertido",
-  "tímido",
-  "peligroso"
-];
-
-export const abilities = [
-  "volverse invisible",
-  "cambiar de color",
-  "atraer objetos",
-  "leer pensamientos"
-];
-
-export const rarities = [
-  "común",
-  "raro",
-  "épico",
-  "legendario"
+export const monstruos = [
+  {
+    id: 1,
+    nombre: "Gloop",
+    color: "azul",
+    ojos: 5,
+    personalidad: "amigable",
+    habilidad: "Teletransportación",
+    rareza: "común",
+  },
+  {
+    id: 2,
+    nombre: "Momo",
+    color: "morado",
+    ojos: 10,
+    personalidad: "divertido",
+    habilidad: "Control mental",
+    rareza: "raro",
+  },
+  {
+    id: 3,
+    nombre: "Bubu",
+    color: "amarillo",
+    ojos: 1,
+    personalidad: "tímido",
+    habilidad: "Invisibilidad",
+    rareza: "común",
+  },
+  {
+    id: 4,
+    nombre: "Zappy",
+    color: "verde",
+    ojos: 15,
+    personalidad: "peligroso",
+    habilidad: "Electricidad",
+    rareza: "legendario",
+  },
+  {
+    id: 5,
+    nombre: "Pipo",
+    color: "azul",
+    ojos: 10,
+    personalidad: "divertido",
+    habilidad: "Duplicación",
+    rareza: "raro",
+  },
+  {
+    id: 6,
+    nombre: "Nube",
+    color: "morado",
+    ojos: 5,
+    personalidad: "tímido",
+    habilidad: "Manipular sombras",
+    rareza: "común",
+  },
+  {
+    id: 7,
+    nombre: "Toto",
+    color: "amarillo",
+    ojos: 15,
+    personalidad: "peligroso",
+    habilidad: "Superfuerza",
+    rareza: "legendario",
+  },
+  {
+    id: 8,
+    nombre: "Lumi",
+    color: "verde",
+    ojos: 1,
+    personalidad: "amigable",
+    habilidad: "Curación",
+    rareza: "raro",
+  },
+  {
+    id: 9,
+    nombre: "Murk",
+    color: "morado",
+    ojos: 15,
+    personalidad: "peligroso",
+    habilidad: "Control de energía",
+    rareza: "legendario",
+  },
+  {
+    id: 10,
+    nombre: "Boni",
+    color: "azul",
+    ojos: 1,
+    personalidad: "amigable",
+    habilidad: "Hablar con animales",
+    rareza: "común",
+  },
 ];
