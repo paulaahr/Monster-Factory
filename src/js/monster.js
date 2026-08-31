@@ -1,0 +1,39 @@
+import {
+  names,
+  colors,
+  eyeCounts,
+  personalities,
+  abilities,
+  rarities
+} from "./data.js";
+
+export function getRandomItem(array) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+  return array[randomIndex];
+}
+
+export function generateMonster() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const [name, color, eyes, personality, ability, rarity] = [
+        getRandomItem(names),
+        getRandomItem(colors),
+        getRandomItem(eyeCounts),
+        getRandomItem(personalities),
+        getRandomItem(abilities),
+        getRandomItem(rarities)
+      ];
+
+      const monster = {
+        name,
+        color,
+        eyes,
+        personality,
+        ability,
+        rarity
+      };
+
+      resolve(monster);
+    }, 1000);
+  });
+}

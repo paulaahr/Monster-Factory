@@ -1,0 +1,11 @@
+{
+  "name": "monster-factory",
+  "version": "1.0.0",
+  "description": "Mini programa interactivo de generación de monstruos.",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/js/index.js",
+    "build": "tsc",
+    "start": "node src/js/index.js"
+  }
+}
